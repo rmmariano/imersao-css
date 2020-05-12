@@ -1,3 +1,15 @@
+/* here we are using the concept of `mobile first`, in other words
+   all default code is developed to works inside mobile devices first */
+
+/* reset all values */
+* {
+    margin: 0;
+    padding: 0;
+    /* border-box - the width and height properties (and min/max properties) includes content, padding and border.
+       Source: https://www.w3schools.com/cssref/css3_pr_box-sizing.asp */
+    box-sizing: border-box;
+}
+
 body {
     background-image:
         /* transparent black */
@@ -12,11 +24,41 @@ body {
        auto - my page width is relative related to my `100vh`, then the image will not be distorted*/
     background-size: auto 100vh;
     font-family: Arial;
+    font-size: 12px;
     /* height: 100vh; */
+}
+
+/* create a condition to larger screens */
+@media (min-width: 400px) {
+    body {
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+header {
+    /* 100% of my viewport height */
+    height: 100vh;
+    /* all tags inside the header are now inside columns */
+    display: flex;
+    /* this centers the tag on the screen horizontally - this just works with flex  */
+    justify-content: center;
+    /* this centers the tag on the screen vertically -this just works with flex */
+    align-items: center;
 }
 
 .menu {
     background-color: white;
+    /* the menu will be fixed on the page */
+    position: fixed;
+    width: 100vw;
+    /* this forces the menu to stick to the top of the screen - this just works with `position: fixed` */
+    top: 0;
 }
 
 .menu li {
@@ -28,6 +70,14 @@ body {
     display: flex;
     /* add a space around the <li> tags */
     justify-content: space-around;
+}
+
+.menu a {
+    /* transform a inline element to a block element */
+    /* to a <a> tag, the default value to display is `inline` */
+    display: block;
+    /* this increases the click area of my tag, in order to act as a "button"  */
+    padding: 10px 20px;
 }
 
 a {
@@ -46,6 +96,17 @@ a:hover {
     text-align: center;
 }
 
+.site-title {
+    /* `em` is a relative length */
+    /* font-size is 4 times the size of the current font (e.g. in the body) */
+    font-size: 4em;
+}
+
 .site-subtitle {
     font-style: italic;
+}
+
+.img-portfolio {
+    height: 180px;
+    width: 250px;
 }
