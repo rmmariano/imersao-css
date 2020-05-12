@@ -1,5 +1,12 @@
 body {
-    background-image: url('http://www.vanessametonini.com.br/imersaocss/a1/img/fundo.jpg');
+    background-image:
+        /* transparent black */
+        linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+        ),
+        /* image */
+        url('../img/crown_of_thorns.jpg');
     /* background-size: 50px 500px; */
     /* 100vh - 100% of my page absolute height
        auto - my page width is relative related to my `100vh`, then the image will not be distorted*/
@@ -24,7 +31,7 @@ body {
 }
 
 a {
-    color: teal;
+    color: grey;
     /* remove the underscore from the text */
     text-decoration: none;
 }
