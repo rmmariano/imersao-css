@@ -23,9 +23,9 @@ body {
     /* 100vh - 100% of my page absolute height
        auto - my page width is relative related to my `100vh`, then the image will not be distorted*/
     background-size: auto 100vh;
-    font-family: Arial;
+    font-family: 'Source Code Pro', monospace;
     font-size: 12px;
-    /* height: 100vh; */
+    height: 100vh;
 }
 
 /* create a condition to larger screens */
@@ -100,13 +100,69 @@ a:hover {
     /* `em` is a relative length */
     /* font-size is 4 times the size of the current font (e.g. in the body) */
     font-size: 4em;
+    font-family: 'MedievalSharp', cursive;
 }
 
 .site-subtitle {
     font-style: italic;
+    font-family: 'Almendra', serif;
+    line-height: 1.8em;
 }
 
-.img-portfolio {
-    height: 180px;
-    width: 250px;
+.project {
+    padding: 2em;
+    height: 100vh;
 }
+
+.project .grid {
+    display: grid;
+    /* this adds a grap among the figures inside the grid - this just works with `display: grid` */
+    gap: 2em;
+}
+
+@media (min-width: 560px) {
+    .project .grid {
+        /* this forces my grid to have 2 columns with 240px */
+        /* grid-template-columns: 240px 240px; */
+        grid-template-columns: repeat(2, 240px);
+    }
+}
+
+@media (min-width: 880px) {
+    .project .grid {
+        align-content: center;
+        /* this forces my grid to have 3 columns with 240px */
+        /* grid-template-columns: 240px 240px 240px; */
+        grid-template-columns: repeat(3, 240px);
+        justify-content: center;
+        /* calc() calcs different types of units */
+        height: calc(100vh - 8em - 48px);
+    }
+}
+
+.project figure {
+    text-align: center;
+}
+
+.project h2 {
+    font-family: 'Almendra', serif;
+    color: whitesmoke;
+    margin-bottom: 1.5em;
+    font-size: 2em;
+}
+
+.img-project {
+    height: auto;
+    width: 250px;
+    /* this forces the image fits inside the passed height/width  */
+    object-fit: cover;
+    /* this indicates how the image should fit */
+    /* object-position: left bottom; */
+}
+
+/* @media (min-width: 1200px) {
+    .img-project {
+        height: auto;
+        width: 100%;
+    }
+} */
