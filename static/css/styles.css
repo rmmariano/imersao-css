@@ -59,6 +59,10 @@ header {
     width: 100vw;
     /* this forces the menu to stick to the top of the screen - this just works with `position: fixed` */
     top: 0;
+    /* put the menu in front of all things */
+    /* animation has a bigger `z-index`, then the `.title` animation overlays the menu,
+       because of that, we need to increase the `.menu` `z-index`  */
+    z-index: 1;
 }
 
 .menu li {
@@ -78,6 +82,15 @@ header {
     display: block;
     /* this increases the click area of my tag, in order to act as a "button"  */
     padding: 10px 20px;
+    /* `transition` just works if I have another pseudo-class like `:hover`.
+        this property will let the transition to hover more slow. */
+    transition: background-color 1s, color 1s;
+}
+
+.menu a:active,
+.menu a:hover {
+    background-color: grey;
+    color: white;
 }
 
 a {
@@ -88,6 +101,27 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.title {
+    /* animation initial state */
+    transform: scale(0.2) translateY(50vh);
+    opacity: 0; /* transparent */
+    /* `forwards` does the animation to stay in the final state */
+    animation: 1s linear 2s titleAnimation forwards;
+}
+
+/* create a new animation to use above */
+@keyframes titleAnimation {
+    /* animation initial state */
+    /* from {  / * or `0%` * /
+        / * this section is inside the class `.title` * /
+    } */
+    /* animation final state */
+    to { /* or `100%` */
+        transform: scale(1) translateY(0);
+        opacity: 1; /* not transparent */
+    }
 }
 
 .site-subtitle,
@@ -109,9 +143,18 @@ a:hover {
     line-height: 1.8em;
 }
 
+.contato,
 .project {
     padding: 2em;
-    height: 100vh;
+    min-height: 100vh;
+}
+
+.contato h2,
+.project h2 {
+    font-family: 'Almendra', serif;
+    color: whitesmoke;
+    margin-bottom: 1.5em;
+    font-size: 2em;
 }
 
 .project .grid {
@@ -144,13 +187,6 @@ a:hover {
     text-align: center;
 }
 
-.project h2 {
-    font-family: 'Almendra', serif;
-    color: whitesmoke;
-    margin-bottom: 1.5em;
-    font-size: 2em;
-}
-
 .img-project {
     height: auto;
     width: 250px;
@@ -158,6 +194,12 @@ a:hover {
     object-fit: cover;
     /* this indicates how the image should fit */
     /* object-position: left bottom; */
+    /* time to a transition (e.g. hover) */
+    transition: transform 500ms;
+}
+
+.img-project:hover {
+    transform: scale(1.2) rotate(2deg);
 }
 
 /* @media (min-width: 1200px) {
@@ -166,3 +208,20 @@ a:hover {
         width: 100%;
     }
 } */
+
+.contato .icons {
+    text-align: center;
+}
+
+.contato a {
+    color: whitesmoke;
+    font-size: 4em;
+    transition: text-shadow 1s;
+}
+
+.contato a:active,
+.contato a:hover {
+    text-decoration: none;
+    /* text-shadow: 0px 0px 10px whitesmoke; */
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
